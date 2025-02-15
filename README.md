@@ -4,29 +4,37 @@ A modern healthcare management web application built with Angular, TypeScript th
 
 ## Screenshots
 
-### Users Page
+### Login Page
 
-![Users Page](/screenshots/user-page.png)
+![Login Page](/screenshots/1-login.png)
 
-### User Detail
+### Register Page
 
-![User Detail](/screenshots/user-detail-page.png)
+![Register Page](/screenshots/2-register.png)
 
-### Posts Page
+### Doctor List
 
-![Posts Page](/screenshots/posts-page.png)
+![Doctor List](/screenshots/3-doctor-list.png)
 
-### Post Detail
+### Patient List
 
-![Post Detail](/screenshots/post-detail-page.png)
+![Patient List](/screenshots/4-patient-list.png)
 
-### Create Post
+### Patient List by Doctor
 
-![Create Post](/screenshots/post-create-page.png)
+![Patient List by Doctor](/screenshots/5-patient-list-by-doctor.png)
 
-### Edit Post
+### New Doctor Form
 
-![Edit Post](/screenshots/post-editing-page.png)
+![New Doctor Form](/screenshots/6-form-new-doctor.png)
+
+### New Patient Form
+
+![New Patient Form](/screenshots/7-form-new-patient.png)
+
+### Edit Patient Form
+
+![Edit Patient Form](/screenshots/8-form-editin-patient.png)
 
 ## Features
 
