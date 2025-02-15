@@ -1,0 +1,24 @@
+<mat-toolbar color="primary">
+  <span>Hospital Management</span>
+  <span class="spacer"></span>
+
+  @if (authService.isAuthenticated()) {
+  <button mat-button [routerLink]="['/doctors']">
+    <mat-icon>medical_services</mat-icon>
+    Doctors
+  </button>
+
+  <button mat-button [routerLink]="['/patients']">
+    <mat-icon>people</mat-icon>
+    Patients
+  </button>
+
+  <button mat-icon-button (click)="logout()">
+    <mat-icon>logout</mat-icon>
+  </button>
+  }
+</mat-toolbar>
+
+<div class="content">
+  <router-outlet></router-outlet>
+</div>

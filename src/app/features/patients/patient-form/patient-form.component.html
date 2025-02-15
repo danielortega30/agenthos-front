@@ -1,0 +1,77 @@
+<div class="patient-form-container">
+  <div class="patient-form-card">
+    <h1>{{ isEditing ? 'Edit Patient' : 'New Patient' }}</h1>
+    <br />
+
+    <form [formGroup]="patientForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" />
+        <mat-icon matPrefix>person</mat-icon>
+        <mat-error *ngIf="patientForm.get('name')?.errors?.['required']">
+          Name is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Age</mat-label>
+        <input matInput type="number" min="0" formControlName="age" />
+        <mat-icon matPrefix>calendar_today</mat-icon>
+        <mat-error *ngIf="patientForm.get('age')?.errors?.['required']">
+          Age is required
+        </mat-error>
+        <mat-error *ngIf="patientForm.get('age')?.errors?.['min']">
+          Age must be greater than 0
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Diagnostic</mat-label>
+        <textarea matInput formControlName="diagnostic" rows="3"></textarea>
+        <mat-icon matPrefix>medical_information</mat-icon>
+        <mat-error *ngIf="patientForm.get('diagnostic')?.errors?.['required']">
+          Diagnostic is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Assigned Doctor</mat-label>
+        <mat-select formControlName="doctorId" placeholder="Select a doctor">
+          @for (doctor of doctors$ | async; track doctor.id) {
+          <mat-option [value]="doctor.id">
+            {{ doctor.name }} - {{ doctor.speciality }}
+          </mat-option>
+          }
+        </mat-select>
+        <mat-icon matPrefix>medical_services</mat-icon>
+        <mat-error *ngIf="patientForm.get('doctorId')?.errors?.['required']">
+          Doctor assignment is required
+        </mat-error>
+      </mat-form-field>
+
+      <div class="button-container">
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          [disabled]="patientForm.invalid"
+          class="submit-button"
+        >
+          <mat-icon>save</mat-icon>
+          <span>{{ isEditing ? 'Update' : 'Save' }}</span>
+        </button>
+
+        <button
+          mat-stroked-button
+          color="primary"
+          type="button"
+          routerLink="/patients"
+          class="cancel-button"
+        >
+          <mat-icon>arrow_back</mat-icon>
+          <span>Back to List</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
