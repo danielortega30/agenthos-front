@@ -34,7 +34,7 @@ export class RegisterComponent {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private router: Router,
+    private router: Router
   ) {
     this.registerForm = this.fb.group(
       {
@@ -42,7 +42,7 @@ export class RegisterComponent {
         password: ['', [Validators.required, Validators.minLength(6)]],
         confirmPassword: ['', [Validators.required]],
       },
-      { validators: this.passwordMatchValidator },
+      { validators: this.passwordMatchValidator }
     );
   }
 
@@ -54,7 +54,8 @@ export class RegisterComponent {
 
   onSubmit(): void {
     if (this.registerForm.valid) {
-      this.authService.register(this.registerForm.value).subscribe({
+      const { username, password } = this.registerForm.value;
+      this.authService.register({ username, password }).subscribe({
         next: () => this.router.navigate(['/login']),
         error: (error) => console.error('Registration failed:', error),
       });
